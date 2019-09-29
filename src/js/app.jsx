@@ -1,43 +1,57 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 const axios = require('axios');
 
-class App extends Component {
-    constructor() {
-        super();
+function App () {
+    const [strs, setStrs] = useState([]);
 
-        this.state = {
-            
-        };
-    }
+    useEffect (() => {
+    console.log('test');
+    console.log(`second stories `, strs);
+    }) 
 
-    call () {
+     function call () {
+        let storiesArr = [];
+         
         axios.get(`http://hacker-news.firebaseio.com/v0/topstories.json`)
         .then((result) => {
-            // res.send(result.data);
-            console.log(`result `, result.data)
             for (let i = 0; i < 30; i++) {
                 axios.get(`http://hacker-news.firebaseio.com/v0/item/${result.data[i]}.json`)
                 .then((result) => {
-                    console.log(`each result: `, result)
+                    storiesArr.push(result);
                 })
             }
         })
         .catch((error) => {
             console.error(error);
-            // res.send('An error occured.');
         })
+        console.log(`storiesArr `, storiesArr);
+        setStrs(storiesArr);
     }
 
-    render() {
         return (
            <>
-                <h1 onClick={ this.call } className="click">Test</h1>
-
+                <h1 onClick={ () => call() } className="click">Test</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Test</td>
+                            <td>{strs}</td>
+                        </tr>
+                            {
+                                strs.map((each) => {
+                                    return (<tr>
+                                            <td>{ each.data.title } Test</td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                    </tbody>
+                </table>
            </>
         );
-    }
+
 }
 
 export default App;
