@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet';
 const axios = require('axios');
 
 function App () {
-    const [strs, setStrs] = useState([]);
+    const [stories, setStories] = useState(['test', 'test1', 'test2']);
 
     useEffect (() => {
-    console.log('test');
-    console.log(`second stories `, strs);
+    console.log(`second state `, stories);
+    // console.log(`second state2 `, stories);
     }) 
 
      function call () {
@@ -19,6 +19,7 @@ function App () {
             for (let i = 0; i < 30; i++) {
                 axios.get(`http://hacker-news.firebaseio.com/v0/item/${result.data[i]}.json`)
                 .then((result) => {
+                    console.log(result)
                     storiesArr.push(result);
                 })
             }
@@ -27,26 +28,32 @@ function App () {
             console.error(error);
         })
         console.log(`storiesArr `, storiesArr);
-        setStrs(storiesArr);
+        setStories(storiesArr);
+    }
+
+    function test () {
+        console.log(`stories from test button: `, stories)
+        stories.map((each, i) => {
+            return  <tr key={i}>
+                        <td key={i}>{ each.data ? each.data.title : "nope" }</td>
+                    </tr>
+        })
     }
 
         return (
            <>
                 <h1 onClick={ () => call() } className="click">Test</h1>
+                <h1 onClick={ () => test() } className="click">Test2</h1>
                 <table>
-                    <tbody>
+                    <thead>
                         <tr>
-                            <td>Test</td>
-                            <td>{strs}</td>
+                            <td>Table</td>
                         </tr>
-                            {
-                                strs.map((each) => {
-                                    return (<tr>
-                                            <td>{ each.data.title } Test</td>
-                                        </tr>
-                                    );
-                                })
-                            }
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>{stories}</td>
+                            </tr>
                     </tbody>
                 </table>
            </>
