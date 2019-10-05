@@ -1,18 +1,82 @@
+$ltgrey: rgb(236, 236, 236);
+$red: #c53211;
+$orange: #d35014;
+$dkred: #911e05;
+$grey: #2e3830;
+$tan: #e6dbc9;
+$font: Helvetica;
+
+body {
+    width: 100%;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+#root {
+    top: 0;
+}
+
+.App {
+    top: 0;
+}
+
 .click {
     cursor: pointer;
     background-color: navy;
     color: white;
-    width: 300px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     text-align: center;
-    padding-top: 80px
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 .table {
-    font-family: Helvetica;
-    font-size: 2rem;
+    font-family: $font;
+    border-collapse: collapse;
+    margin-top: 2vh;
+    width: 100vw;
 }
 
+
 tr {
-    background-color: grey;
+    background-color: $ltgrey;
+    height: 5vh;
+    min-height: 150px;
+    background-color: $tan;
+}
+
+td {
+    font-size: 1.2rem;
+}
+
+.title {
+    color: $red;
+    margin: 2vh 2vw;
+}
+
+.by {
+    color: $grey;
+    font-size: .8rem;
+    margin: 2vh 3vw;
+    }
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: $dkred;
+  }
+
+a:hover {
+    color: $orange;
+}
+
+.display-url {
+    color: $grey;
+    font-size: .6rem;
 }
