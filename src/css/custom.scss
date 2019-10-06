@@ -6,61 +6,133 @@ $grey: #2e3830;
 $tan: #e6dbc9;
 $font: Helvetica;
 
+@mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin web {
+    @media (min-width: 769) {
+      @content;
+    }
+  }
+
 body {
     width: 100%;
     margin: 0;
     top: 0;
     left: 0;
+    background-color: $tan;
 }
 
 #root {
     top: 0;
 }
 
+////////////////////////////////////////////
+//            Header                      //
+////////////////////////////////////////////
+
+.header {
+    width: 100vw;
+    height: 6vh;
+    background-color: $grey;
+}
+
+.header-title {
+    justify-content: right;
+    font-family: $font;
+    color: $red;
+    margin: 0 0 0 20vw;
+    font-size: 1.8rem;
+}
+
+.top-bar {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    top: 28%;
+}
+
+.click {
+    color: $red;
+    font-size: 1rem;
+    margin: 0 5vw;
+    font-family: $font;
+    cursor: pointer;
+    // position: relative;
+    // top: 28%;
+}
+
+
+
+////////////////////////////////////////////
+//            Main App                    //
+////////////////////////////////////////////
+
 .App {
     top: 0;
 }
 
-.click {
-    cursor: pointer;
-    background-color: navy;
-    color: white;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-}
+// .click {
+//     cursor: pointer;
+//     background-color: navy;
+//     color: white;
+//     width: 100px;
+//     height: 100px;
+//     text-align: center;
+//     // position: fixed;
+//     top: 0;
+//     right: 0;
+// }
+
+////////////////////////////////////////////
+//                Table                   //
+////////////////////////////////////////////
 
 .table {
     font-family: $font;
     border-collapse: collapse;
     margin-top: 2vh;
-    width: 100vw;
+    width: 90vw;
+    margin: 0 5%;
 }
 
 
 tr {
-    background-color: $ltgrey;
-    height: 5vh;
-    min-height: 150px;
-    background-color: $tan;
+    height: 12vh;
+    min-height: 80px;
+    background-color: $grey;
+    margin: 1vh 0;
+    display: flex;
+    align-content: column;
+    justify-content: flex-start;
+    overflow: auto;
+
 }
 
 td {
     font-size: 1.2rem;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 .title {
     color: $red;
-    margin: 2vh 2vw;
+    margin: 2vh 0 0 2vw;
 }
 
 .by {
     color: $grey;
     font-size: .8rem;
-    margin: 2vh 3vw;
+    margin: 2vh 1vw;
     }
 
 a {
@@ -77,6 +149,7 @@ a:hover {
 }
 
 .display-url {
-    color: $grey;
+    color: $tan;
     font-size: .6rem;
+    margin: .5vh 2vw;
 }
