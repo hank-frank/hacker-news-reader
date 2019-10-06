@@ -44,17 +44,21 @@ body {
     justify-content: right;
     font-family: $font;
     color: $red;
-    margin: 0 0 0 20vw;
+    margin: 20% 0 0 20vw;
     font-size: 1.8rem;
+
+    @include mobile {
+        font-size: 1rem;
+        margin: 0 0 0 10vw;
+    }
 }
 
 .top-bar {
-    
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
-    top: 28%;
+    align-content: flex-end
 }
 
 .click {
@@ -63,8 +67,11 @@ body {
     margin: 0 5vw;
     font-family: $font;
     cursor: pointer;
-    // position: relative;
-    // top: 28%;
+   
+    @include mobile {
+        font-size: .8rem;
+        margin: 0 2vw;
+    }
 }
 
 
@@ -76,18 +83,6 @@ body {
 .App {
     top: 0;
 }
-
-// .click {
-//     cursor: pointer;
-//     background-color: navy;
-//     color: white;
-//     width: 100px;
-//     height: 100px;
-//     text-align: center;
-//     // position: fixed;
-//     top: 0;
-//     right: 0;
-// }
 
 ////////////////////////////////////////////
 //                Table                   //
@@ -101,7 +96,6 @@ body {
     margin: 0 5%;
 }
 
-
 tr {
     height: 12vh;
     min-height: 80px;
@@ -111,11 +105,14 @@ tr {
     align-content: column;
     justify-content: flex-start;
     overflow: auto;
-
 }
 
 td {
     font-size: 1.2rem;
+
+    @include mobile {
+        font-size: .8rem;
+    }
 }
 
 .flex-row {
@@ -130,9 +127,13 @@ td {
 }
 
 .by {
-    color: $grey;
+    color: $tan;
     font-size: .8rem;
-    margin: 2vh 1vw;
+    margin: 2vh 2vw;
+
+    @include mobile {
+        font-size: .5rem;
+    }
     }
 
 a {
@@ -152,4 +153,8 @@ a:hover {
     color: $tan;
     font-size: .6rem;
     margin: .5vh 2vw;
+
+    @include mobile {
+        font-size: .4rem;
+    }
 }
