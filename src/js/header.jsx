@@ -7,11 +7,11 @@ function header (props) {
         <>
             <div className="header">
                 <div className="top-bar">
-                    <h6 onClick={props.callTop} className="click">Top</h6>
-                    <h6 onClick={props.callNew} className="click">New</h6>
-                    <h6 onClick={props.callBest} className="click">Best</h6>
-                <h4 className="header-title">Hacker News Reader!</h4>
+                    <h6 onClick={props.top} className="click">Top</h6>
+                    <h6 onClick={props.new} className="click">New</h6>
+                    <h6 onClick={props.best} className="click">Best</h6>
                 </div>
+                <h4 className="header-title">Hacker News Reader</h4>
             </div>
         </>
     );

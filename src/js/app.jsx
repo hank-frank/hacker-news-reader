@@ -136,13 +136,13 @@ const getBestStoryList = async () => {
           />
         <table className="table">
           <tbody>
-            {sampleData.map(story => {
+            {stories.map(story => {
                 // console.log(`each story: `, story)
               return (
                 <tr key={story.id}>
                   <td>
                       <div className="flex-row">
-                        <a href={story.url} className="title">{story.title}</a> 
+                        <a href={story.url} className="title" target="_blank">{story.title}</a> 
                         <p className="by">by {story.by}</p>
                       </div>
                     <p className="display-url">{story.url}</p>

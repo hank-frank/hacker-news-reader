@@ -35,22 +35,9 @@ body {
 ////////////////////////////////////////////
 
 .header {
-    width: 100vw;
-    height: 6vh;
-    background-color: $grey;
-}
-
-.header-title {
-    justify-content: right;
-    font-family: $font;
-    color: $red;
-    margin: 20% 0 0 20vw;
-    font-size: 1.8rem;
-
-    @include mobile {
-        font-size: 1rem;
-        margin: 0 0 0 10vw;
-    }
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 .top-bar {
@@ -58,13 +45,32 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
-    align-content: flex-end
+    align-content: center;
+    vertical-align: middle;
+    width: 100vw;
+    background-color: $grey;
+
 }
+
+.header-title {
+    justify-content: right;
+    font-family: $font;
+    color: $grey;
+    margin: 1vh 2vw;
+    font-size: 1.8rem;
+    align-self: center;
+
+    @include mobile {
+        font-size: 1rem;
+        margin: 0 0 0 10vw;
+    }
+}
+
 
 .click {
     color: $red;
     font-size: 1rem;
-    margin: 0 5vw;
+    margin: 1vh 5vw;
     font-family: $font;
     cursor: pointer;
    
@@ -97,12 +103,12 @@ body {
 }
 
 tr {
-    height: 12vh;
+    // height: 12vh;
     min-height: 80px;
     background-color: $grey;
     margin: 1vh 0;
     display: flex;
-    align-content: column;
+    flex-direction: column;
     justify-content: flex-start;
     overflow: auto;
 }
@@ -119,17 +125,19 @@ td {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    margin: 1.5vh 0;
 }
 
 .title {
     color: $red;
-    margin: 2vh 0 0 2vw;
+    margin:  0 2vw;
 }
 
 .by {
     color: $tan;
     font-size: .8rem;
-    margin: 2vh 2vw;
+    margin: 0 2vw;
 
     @include mobile {
         font-size: .5rem;
@@ -152,7 +160,7 @@ a:hover {
 .display-url {
     color: $tan;
     font-size: .6rem;
-    margin: .5vh 2vw;
+    margin: 0 2vw;
 
     @include mobile {
         font-size: .4rem;
