@@ -2,6 +2,8 @@
 
 This is a news reader for Hacker News. It displays links to the stories they have and sorts by New, Best and Top. 
 
+It is a React and Parcel site that uses Sass fro it's styling. 
+
 
 ## Getting Started
 
