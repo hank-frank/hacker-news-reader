@@ -57,7 +57,7 @@ body {
     font-family: $font;
     color: $grey;
     margin: 1vh 2vw;
-    font-size: 1.8rem;
+    font-size: 2rem;
     align-self: center;
 
     @include mobile {
@@ -165,4 +165,11 @@ a:hover {
     @include mobile {
         font-size: .4rem;
     }
+}
+
+.test-button {
+    background-color: $red;
+    width: 100px;
+    height: 60px;
+    color: $tan;
 }
