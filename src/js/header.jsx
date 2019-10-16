@@ -12,6 +12,7 @@ function header (props) {
                     <h6 onClick={props.best} className="click">Best</h6>
                 </div>
                 <h4 className="header-title">Hacker News Reader</h4>
+                <h6 className="page-number">Page {props.page}</h6>
             </div>
         </>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+// import { HashRouter as Router, Route } from 'react-router-dom';
+// import { Helmet } from 'react-helmet';
 
 import Header from "./header.jsx"
 
@@ -32,6 +32,8 @@ import Header from "./header.jsx"
     const [top, setTop] = useState([]);
     const [best, setBest] = useState([]);
     const [recent, setRecent] = useState([]);
+    const [current, setCurrent] = useState();
+    const [page, setPage] = useState(1);
 
     useEffect ( () => {
       async function fetchTop () {
@@ -66,47 +68,75 @@ import Header from "./header.jsx"
     const callTop = async () => {
       const storiesArr = await getStories(top, start, finish);
       setStories(formatStories(storiesArr));
+      setCurrent('topStories');
+     
     };
 
     const callBest = async () => {
         const storiesArr = await getStories(best, start, finish);
         setStories(formatStories(storiesArr));
-      };
+        setCurrent('bestStories');
+        
+    };
 
       const callNew = async () => {
         const storiesArr = await getStories(recent, start, finish);
         setStories(formatStories(storiesArr));
-      };
+        setCurrent('newStories');
+        
+    };
 
-      const forward = (start, finish) => {
-            setStart(start + 25);
-            setFinish(finish + 25);
-            callTop();
+      const forward = () => {
+        if (page > 8 ) {
+          console.log("end of the line playboy... ")
+        }else {
+            setStart((start + 25));
+            setFinish((finish + 25));
+            setPage((page + 1))
+
+            if (current == 'topStories'){
+              callTop();
+            } else if (current == 'bestStories') {
+              callBest();
+            } else if (current == 'newStories') {
+              callNew();
+            };
+          }
       }
 
-      const back = (start, finish) => {
-        if (start > 25) {
-          setStart(start - 25);
-          setFinish(finish - 25);
+      const back = () => {
+       if (page <= 1) {
+         console.log("already at the start playboy...")
+       } else {
+          setStart((start - 25));
+          setFinish((finish - 25));
+          setPage((page - 1))
+          if (current == 'topStories'){
+            callTop();
+          } else if (current == 'bestStories') {
+            callBest();
+          } else if (current == 'newStories') {
+            callNew();
+          };
         }
       }
 
-      const test = () => {
-        console.log(`top from test: `, top);
-        console.log(`best: `, best);
-        console.log(`new: `, recent)
-      }
+      //leaving function and button for onCall for further pagination experiments
+      // const test = () => {
+      //   console.log(`start: `, start);
+      //   console.log(`finish: `, finish);
+      //   console.log(`current `, current)
+      // }
 
     return (
       <div className="App">
           <Header
-            new = {callNew}
-            best = {callBest}
-            top = {callTop}
+            new = { callNew }
+            best = { callBest }
+            top = { callTop }
+            page = { page }
           />
-          <button className="test-button" onClick={() => test()}>Test</button>
-          <button className="test-button" onClick={() => back()}>Back</button>
-          <button className="test-button" onClick={() => forward()}>Forward</button>
+        {/* <button className="test-button" onClick={() => test()}>Test</button> */}
         <table className="table">
           <tbody>
             {stories.map(story => {
@@ -124,16 +154,12 @@ import Header from "./header.jsx"
             })}
           </tbody>
         </table>
-        {/* <button className="test-button" onClick={forward()}>Back</button>
-        <button className="test-button" onClick={back()}>Forward</button> */}
+        <div className="button-flex-bottom">
+            <button className="page-button-bottom" onClick={() => back()}>Back</button>
+            <button className="page-button-bottom" onClick={() => forward()}>Forward</button>
+          </div>
       </div>
     );
   }
 
 export default App;
-
-//the different api calls:
-// Items
-// /v0/item/<integerid>.json
-// Users
-// /v0/user/<userid>.json/
